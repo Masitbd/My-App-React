@@ -1,20 +1,37 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import './App.css';
-import PostForm from './PostForm'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import Home from '../components/Home'
+import About from '../components/About'
+import Contact from '../components/Contact'
+import Test from '../components/Test'
+
+import Nav from '../components/Nav'
 
 
-class App extends Component{
 
-render(){
-  return (
-      <div className='container'>
-        <h1>this is app.js</h1>
-        <PostForm/>
+
+class App extends Component {
+
+  render() {
+    return (
+      <BrowserRouter>
+        <div className='container'>
+        <Nav />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/about' component={About} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/posts/:postId' component={Test} />
+          </Switch>
         </div>
-  )
-    
-}
+      </BrowserRouter>
+    )
+
+  }
 
 }
 
